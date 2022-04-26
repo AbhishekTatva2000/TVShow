@@ -29,8 +29,13 @@ class HomeController < ApplicationController
       @shows = Show.where(chanel: @chanel.ids)
     else
       @chanel = Chanel.where("name LIKE ?", "%#{params[:chanel]}%")
-      @shows = Show.where(name: params[:show], chanel: @chanel.ids)
+      @shows = Show.joins(:chanel).where('LOWER(shows.name) like (?) AND LOWER(chanels.name) like (?)', "%#{params[:show].downcase}%", "%#{params[:chanel].downcase}%")
     end
   end
+
+  # def send_email
+  #   SendEmailToUserJob.perfom_later
+  #   redirect_to root_path
+  # end
 
 end

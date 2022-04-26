@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to TVShow App, <%= @user.name %></h1>
+    <p>Thanks for joining and have a great day!</p><br>
+    <% @show.each do |s| %>
+      <%= s.name %>
+    <% end %>
+  </body>
+</html>

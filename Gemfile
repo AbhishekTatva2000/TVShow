@@ -17,6 +17,8 @@ gem 'sassc'
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "sidekiq-cron"
+gem 'sidekiq'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
