@@ -1,0 +1,22 @@
+.menu_navbar_ul li a{
+    color: white !important;
+}
+a{
+    text-decoration: none !important;
+}
+.site_main_footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.search_form form{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;  
+    align-items: center;
+    padding: 10px;  
+}
+.search_form form input{
+    width: 300px;
+    margin: 10px;
+} 

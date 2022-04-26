@@ -1,0 +1,20 @@
+<%= render "menu" %>
+
+<h2 class="pt-3 pb-2" style="text-align:center;">This is Your Favorite Shows</h2>
+<div class="p-2" style="text-align:center;">Items:<%= @fav.size %></div>
+<div class="chanel-show-div  pb-5"> 
+    <% @fav_shows.each do |fs| %>
+        <div class="card m-5">
+            <div class="card-header">
+                <h4><%= fs.chanel.name %></h4>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%= fs.name %></h5>
+                <p class="card-text"><%= raw(fs.description) %></p>
+                <%= button_to "x", remove_from_fav_path(fs), method: :delete %>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<%= render "footer" %>

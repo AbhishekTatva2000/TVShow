@@ -1,0 +1,22 @@
+<%= render "menu" %>
+<h2 class="pt-3 pb-2" style="text-align:center;">TV Shows</h2>
+<div class="chanel-show-div  pb-5"> 
+    <% @shows.each do |s| %>
+        <div class="card m-5">
+            <div class="card-header">
+                <h4><%= s.chanel.name %></h4>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><%= s.name %></h5>
+                <p class="card-text"><%= s.time %></p>
+                <% if @fav.include?(s) %>
+                    <%= button_to "Remove from Favorite", remove_from_fav_path(s), method: :delete %>
+                <% else %>
+                    <%= button_to "Add to Favorite", add_to_fav_path(s) %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<%= render "footer" %>
