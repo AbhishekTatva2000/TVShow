@@ -1,4 +1,4 @@
 send_email_to_user:
-  cron: "* * * * *"
+  cron: "1 * * * *"
   class: "SendEmailToUserJob"
   queue: default

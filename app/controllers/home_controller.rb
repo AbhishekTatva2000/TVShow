@@ -3,6 +3,8 @@ class HomeController < ApplicationController
 
   def index
     @shows = Show.all
+    @fs = Fav.all
+    @fav = Show.find(@fs)
   end
 
   def show
@@ -11,14 +13,23 @@ class HomeController < ApplicationController
 
   def add_to_fav
     id = params[:id].to_i
-    session[:fav] << id unless session[:fav].include?(id)
+    @user = current_user.id
+    @fav = Fav.find_by(user_id: @user, show_id: id)
+    if @fav.blank?
+      Fav.create(user_id: @user, show_id: id, status: 0)
+    else
+      @fu = Fav.find_by(user_id: @user, show_id: id)
+      @fu.update(status: 0)
+    end
     redirect_to root_path
   end
 
   def remove_from_fav
     id = params[:id].to_i
-    session[:fav].delete(id)
-    redirect_to fav_show_path
+    @user = current_user.id
+    @fu = Fav.find_by(user_id: @user, show_id: id)
+    @fu.update(status: 1)
+    redirect_to root_path
   end
 
   def search
@@ -32,10 +43,5 @@ class HomeController < ApplicationController
       @shows = Show.joins(:chanel).where('LOWER(shows.name) like (?) AND LOWER(chanels.name) like (?)', "%#{params[:show].downcase}%", "%#{params[:chanel].downcase}%")
     end
   end
-
-  # def send_email
-  #   SendEmailToUserJob.perfom_later
-  #   redirect_to root_path
-  # end
 
 end
