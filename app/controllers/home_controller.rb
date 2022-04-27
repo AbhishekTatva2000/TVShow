@@ -3,12 +3,16 @@ class HomeController < ApplicationController
 
   def index
     @shows = Show.all
-    @fs = Fav.all
-    @fav = Show.find(@fs)
+    @fav = Fav.where(user_id: current_user.id, show_id: @shows.ids, status: 0)
   end
 
   def show
-    @fav_shows = Show.find(session[:fav])
+    @user = current_user.id
+    @fav_shows ||= []
+    @fav = Fav.where(user_id: @user, status: 0)
+    @fav.each do |f|
+      @fav_shows << Show.where(id: f.show_id)
+    end
   end
 
   def add_to_fav
@@ -21,7 +25,7 @@ class HomeController < ApplicationController
       @fu = Fav.find_by(user_id: @user, show_id: id)
       @fu.update(status: 0)
     end
-    redirect_to root_path
+    redirect_to fav_show_path
   end
 
   def remove_from_fav
@@ -29,7 +33,7 @@ class HomeController < ApplicationController
     @user = current_user.id
     @fu = Fav.find_by(user_id: @user, show_id: id)
     @fu.update(status: 1)
-    redirect_to root_path
+    redirect_to fav_show_path
   end
 
   def search

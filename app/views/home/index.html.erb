@@ -1,6 +1,6 @@
 <%= render "menu" %>
 <h2 class="pt-3 pb-2" style="text-align:center;">TV Shows</h2>
-<%= @favs %>
+
 <div class="chanel-show-div  pb-5"> 
     <% @shows.each do |s| %>
         <div class="card m-5">
@@ -9,13 +9,12 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title"><%= s.name %></h5>
-                <p class="card-text"><%= s.time.strftime("%T") %></p>
-                <p><%= (Time.now + 30*60).strftime("%H:%M:%S") %></p>
-                <% if @fav.include?(s) %>
-                    <%= button_to "Remove from Favorite", remove_from_fav_path(s), method: :delete %>
-                <% else %>
+                <p class="card-text"><%= s.time.strftime("%H:%M") %></p>
+                <p><% (Time.now + 30*60).strftime("%H:%M") %></p>
+                <div class="add_fav_button_div">
                     <%= button_to "Add to Favorite", add_to_fav_path(s) %>
-                <% end %>
+                    <%= button_to "Remove from Favorite", remove_from_fav_path(s), method: :delete %>
+                </div>
             </div>
         </div>
     <% end %>

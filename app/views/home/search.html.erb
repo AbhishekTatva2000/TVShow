@@ -9,11 +9,10 @@
             <div class="card-body">
                 <h5 class="card-title"><%= s.name %></h5>
                 <p class="card-text"><%= s.time %></p>
-                <% if @fav.include?(s) %>
-                    <%= button_to "Remove from Favorite", remove_from_fav_path(s), method: :delete %>
-                <% else %>
+                <div class="add_fav_button_div">
                     <%= button_to "Add to Favorite", add_to_fav_path(s) %>
-                <% end %>
+                    <%= button_to "Remove from Favorite", remove_from_fav_path(s), method: :delete %>
+                </div>
             </div>
         </div>
     <% end %>

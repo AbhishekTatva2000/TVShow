@@ -20,3 +20,9 @@ a{
     width: 300px;
     margin: 10px;
 } 
+.add_fav_button_div{
+    display: flex;
+}
+.add_fav_button_div button{
+    margin: 0px 10px;
+}
