@@ -1,9 +1,8 @@
 class UserMailer < ApplicationMailer
-    default from: 'notifications@example.com'
+    default from: 'abhidave2000@gmail.com'
 
-    def notification_mail
-        # @user =  current_user
-        @url  = 'http://example.com/login'
+    def notification_email
+        @user = params[:user]
         mail(to: @user.email, subject: 'This is Cron Job Email')
     end
     
