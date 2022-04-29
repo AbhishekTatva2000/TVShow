@@ -9,8 +9,8 @@ class SendEmailToUserJob < ApplicationJob
             @fav.each do |f|
                 @show = Show.find_by(id: f.show_id)
                 @c_time = (Time.now + 30*60).strftime("%H:%M")
-                if @show.time.strftime("%H:%M") >= @c_time
-                    UserMailer.with(user: user).notification_email.deliver_now
+                if @show.time.strftime("%H:%M") == @c_time
+                    UserMailer.with(user: user, show: @show).notification_email.deliver_now
                 end 
             end
             # @shows.each do |ss|

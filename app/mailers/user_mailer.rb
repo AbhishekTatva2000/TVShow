@@ -3,6 +3,7 @@ class UserMailer < ApplicationMailer
 
     def notification_email
         @user = params[:user]
+        @show = params[:show]
         mail(to: @user.email, subject: 'This is Cron Job Email')
     end
     
