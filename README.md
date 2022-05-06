@@ -23,3 +23,13 @@ Things you may want to cover:
 
 * ...
 # TVShow
+
+
+- install active admin with gem
+- Only admin can add, edit, update, delete channel via admin panel
+- Only admin can add,edit,update, delete show via admin panel for different channel
+- User needs to signup/login from web
+- User can see show list 
+- User can do add to favourite/remove from favourite
+- User can search the show by show name & channel name
+- Cron job to send email notification of favourite show before half hour
