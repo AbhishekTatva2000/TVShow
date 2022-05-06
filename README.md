@@ -32,4 +32,4 @@ Things you may want to cover:
 - User can see show list 
 - User can do add to favourite/remove from favourite
 - User can search the show by show name & channel name
-- Cron job to send email notification of favourite show before half hour
+- Cron job to send email notification of favourite show before half hour.
